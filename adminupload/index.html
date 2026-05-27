@@ -17,19 +17,15 @@
   </style>
 </head>
 <body>
-  <div class="admin-upload-wrap">
-    <div class="admin-upload-card">
-      <h1>Admin Gallery Upload</h1>
-      <p>This page is intentionally unlisted. Uploads here appear in the Gallery page for this browser.</p>
-      <div class="admin-upload-form">
+ <div class="gallery-upload-panel">
+      <h2>Add an Image</h2>
+      <p>To upload an image to this gallery, enter the password and choose a file.</p>
+      <div class="gallery-upload-actions">
         <input type="password" id="gallery-upload-password" placeholder="Enter upload password" autocomplete="off" />
         <input type="file" id="gallery-upload-input" accept="image/*" />
         <button type="button" id="gallery-upload-button" class="btn-navy">Upload Image</button>
       </div>
-      <p id="gallery-upload-message" class="admin-upload-message" aria-live="polite"></p>
-      <a href="../#gallery" class="btn-navy" style="margin-top: 8px; display: inline-block;">Go to Gallery</a>
-    </div>
-  </div>
+      <p id="gallery-upload-message" class="gallery-upload-message" aria-live="polite"></p>
 
   <script src="../assets/js/gallery-upload.js" defer></script>
   <script>
