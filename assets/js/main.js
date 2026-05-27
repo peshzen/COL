@@ -5,6 +5,9 @@
 
 
   const GALLERY_MANIFEST_PATH = 'assets/images/gallery/gallery-manifest.json';
+  const GALLERY_PAGE_ID = 'gallery';
+  const GALLERY_REFRESH_MS = 5000;
+  let galleryRefreshTimer = null;
 
   const renderGallery = async () => {
     const grid = document.getElementById('gallery-grid');
@@ -25,11 +28,9 @@
           const src = String(item.src || '').trim();
           if (!src) return '';
           const alt = String(item.alt || 'Gallery image');
-          const caption = String(item.caption || alt);
           return `
             <figure class="gallery-card">
               <img src="${src}" alt="${alt}" loading="lazy" />
-              <figcaption>${caption}</figcaption>
             </figure>
           `;
         })
@@ -55,6 +56,16 @@
 
     document.getElementById(`${PAGE_PREFIX}${targetId}`)?.classList.add('active');
     document.getElementById(`${NAV_PREFIX}${targetId}`)?.classList.add('active');
+
+    if (targetId === GALLERY_PAGE_ID) {
+      renderGallery();
+      if (!galleryRefreshTimer) {
+        galleryRefreshTimer = window.setInterval(renderGallery, GALLERY_REFRESH_MS);
+      }
+    } else if (galleryRefreshTimer) {
+      window.clearInterval(galleryRefreshTimer);
+      galleryRefreshTimer = null;
+    }
 
     if (updateHash && window.location.hash !== `#${targetId}`) {
       history.replaceState(null, '', `#${targetId}`);
