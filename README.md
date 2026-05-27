@@ -47,4 +47,9 @@ Then regenerate the manifest file:
 python scripts/generate-gallery-manifest.py
 ```
 
+For automatic updates while you're adding photos, run watch mode in a separate terminal:
+```bash
+python scripts/generate-gallery-manifest.py --watch
+```
+
 The Gallery page reads `assets/images/gallery/gallery-manifest.json` and renders all listed images automatically.
