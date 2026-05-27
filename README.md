@@ -37,3 +37,14 @@ This is a static site and can be deployed to:
 ## Notes
 - Frontend appearance/content intentionally preserved.
 - JS includes hash-based page state support (`#home`, `#donate`, etc.) for direct linking without visual changes.
+
+
+## Gallery Image Auto-Loading
+Place gallery images inside `assets/images/gallery/` (supported: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.avif`).
+
+Then regenerate the manifest file:
+```bash
+python scripts/generate-gallery-manifest.py
+```
+
+The Gallery page reads `assets/images/gallery/gallery-manifest.json` and renders all listed images automatically.
