@@ -1,8 +1,18 @@
 [
   {
+    "src": "assets/images/gallery/IMG_1153.jpg",
+    "alt": "Img 1153",
+    "caption": "Img 1153"
+  },
+  {
     "src": "assets/images/gallery/PHOTO-2023-06-04-14-29-19.jpg",
     "alt": "Photo 2023 06 04 14 29 19",
     "caption": "Photo 2023 06 04 14 29 19"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2023-06-06-18-11-07 1.jpg",
+    "alt": "Photo 2023 06 06 18 11 07 1",
+    "caption": "Photo 2023 06 06 18 11 07 1"
   },
   {
     "src": "assets/images/gallery/PHOTO-2023-06-06-18-11-07.jpg",
@@ -16,81 +26,112 @@
   },
   {
     "src": "assets/images/gallery/PHOTO-2023-06-18-22-12-58.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2023 06 18 22 12 58",
+    "caption": "Photo 2023 06 18 22 12 58"
   },
   {
     "src": "assets/images/gallery/PHOTO-2023-06-18-22-12-59.jpg",
     "alt": "Photo 2023 06 18 22 12 59",
     "caption": "Photo 2023 06 18 22 12 59"
-  }
-    {
-    "src": "assets/images/gallery/IMG_1153.jpg",
-    "alt": "image",
-    "caption": "image"
   },
-
-
-
-  
-    {
-    "src": "assets/images/gallery/PHOTO-2023-06-18-22-12-59.jpg",
-    "alt": "Photo 2023 06 18 22 12 59",
-    "caption": "Photo 2023 06 18 22 12 59"
-  },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2024-01-18-10-40-53 1.jpg",
-    "alt": "PHOTO-2024-01-18-10-40-53 1.jpg",
-    "caption": "PHOTO-2024-01-18-10-40-53 1.jpg"
+    "alt": "Photo 2024 01 18 10 40 53 1",
+    "caption": "Photo 2024 01 18 10 40 53 1"
   },
-    {
-    "src": "assets/images/gallery/PHOTO-2024-01-18-10-40-53 1.jpg",
-    "alt": "PHOTO-2024-01-18-10-40-53 1.jpg",
-    "caption": "PHOTO-2024-01-18-10-40-53 1.jpg"
-  },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2024-08-22-16-07-53 1.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2024 08 22 16 07 53 1",
+    "caption": "Photo 2024 08 22 16 07 53 1"
   },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2024-09-08-17-56-36.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2024 09 08 17 56 36",
+    "caption": "Photo 2024 09 08 17 56 36"
   },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2024-12-23-10-12-19.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2024 12 23 10 12 19",
+    "caption": "Photo 2024 12 23 10 12 19"
   },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2025-07-04-11-32-02.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2025 07 04 11 32 02",
+    "caption": "Photo 2025 07 04 11 32 02"
   },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2025-07-08-15-46-23 1.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2025 07 08 15 46 23 1",
+    "caption": "Photo 2025 07 08 15 46 23 1"
   },
-    {
+  {
     "src": "assets/images/gallery/PHOTO-2025-07-14-22-47-20.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2025 07 14 22 47 20",
+    "caption": "Photo 2025 07 14 22 47 20"
   },
-      {
+  {
     "src": "assets/images/gallery/PHOTO-2025-07-14-23-38-27.jpg",
-    "alt": "image",
-    "caption": "image"
-  },    
+    "alt": "Photo 2025 07 14 23 38 27",
+    "caption": "Photo 2025 07 14 23 38 27"
+  },
   {
     "src": "assets/images/gallery/PHOTO-2025-07-14-23-46-15 5.jpg",
-    "alt": "image",
-    "caption": "image"
-  },    
+    "alt": "Photo 2025 07 14 23 46 15 5",
+    "caption": "Photo 2025 07 14 23 46 15 5"
+  },
   {
     "src": "assets/images/gallery/PHOTO-2025-07-14-23-49-16.jpg",
-    "alt": "image",
-    "caption": "image"
+    "alt": "Photo 2025 07 14 23 49 16",
+    "caption": "Photo 2025 07 14 23 49 16"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-07-15-02-46-30.jpg",
+    "alt": "Photo 2025 07 15 02 46 30",
+    "caption": "Photo 2025 07 15 02 46 30"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-07-15-02-46-31.jpg",
+    "alt": "Photo 2025 07 15 02 46 31",
+    "caption": "Photo 2025 07 15 02 46 31"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-07-15-02-56-04 1.jpg",
+    "alt": "Photo 2025 07 15 02 56 04 1",
+    "caption": "Photo 2025 07 15 02 56 04 1"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-07-15-02-56-04 2.jpg",
+    "alt": "Photo 2025 07 15 02 56 04 2",
+    "caption": "Photo 2025 07 15 02 56 04 2"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-07-20-17-18-35.jpg",
+    "alt": "Photo 2025 07 20 17 18 35",
+    "caption": "Photo 2025 07 20 17 18 35"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-09-09-18-46-14.jpg",
+    "alt": "Photo 2025 09 09 18 46 14",
+    "caption": "Photo 2025 09 09 18 46 14"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2025-09-28-11-19-37.jpg",
+    "alt": "Photo 2025 09 28 11 19 37",
+    "caption": "Photo 2025 09 28 11 19 37"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2026-02-15-17-21-52.jpg",
+    "alt": "Photo 2026 02 15 17 21 52",
+    "caption": "Photo 2026 02 15 17 21 52"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2026-02-23-19-09-32.jpg",
+    "alt": "Photo 2026 02 23 19 09 32",
+    "caption": "Photo 2026 02 23 19 09 32"
+  },
+  {
+    "src": "assets/images/gallery/PHOTO-2026-05-10-21-50-07.jpg",
+    "alt": "Photo 2026 05 10 21 50 07",
+    "caption": "Photo 2026 05 10 21 50 07"
   }
 ]
