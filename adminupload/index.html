@@ -31,70 +31,19 @@
     </div>
   </div>
 
+  <script src="../assets/js/gallery-upload.js" defer></script>
   <script>
-    (() => {
-      const GALLERY_UPLOAD_PASSWORD = 'COLGalleryUpload';
-      const GALLERY_LOCAL_STORAGE_KEY = 'colGalleryUserUploads';
-
-      const getUserUploadedImages = () => {
-        try {
-          const raw = localStorage.getItem(GALLERY_LOCAL_STORAGE_KEY);
-          const parsed = raw ? JSON.parse(raw) : [];
-          return Array.isArray(parsed) ? parsed : [];
-        } catch (error) {
-          console.error('Unable to read local gallery uploads:', error);
-          return [];
-        }
-      };
-
-      const saveUserUploadedImages = (items) => {
-        localStorage.setItem(GALLERY_LOCAL_STORAGE_KEY, JSON.stringify(items));
-      };
-
-      const setUploadMessage = (text, isError = false) => {
-        const message = document.getElementById('gallery-upload-message');
-        if (!message) return;
-        message.textContent = text;
-        message.style.color = isError ? '#b03020' : '#1a2b5e';
-      };
-
-      document.getElementById('gallery-upload-button')?.addEventListener('click', () => {
-        const passwordInput = document.getElementById('gallery-upload-password');
-        const fileInput = document.getElementById('gallery-upload-input');
-        const password = String(passwordInput?.value || '').trim();
-        const file = fileInput?.files && fileInput.files[0];
-
-        if (password !== GALLERY_UPLOAD_PASSWORD) {
-          setUploadMessage('Incorrect password. Image was not uploaded.', true);
-          return;
-        }
-
-        if (!file) {
-          setUploadMessage('Please choose an image first.', true);
-          return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = () => {
-          const dataUrl = String(reader.result || '');
-          if (!dataUrl) {
-            setUploadMessage('Unable to read selected image.', true);
-            return;
+    window.addEventListener('DOMContentLoaded', () => {
+      window.COLGalleryUpload?.bindUploadForm({
+        onSuccess: () => {
+          const message = document.getElementById('gallery-upload-message');
+          if (message) {
+            message.textContent = 'Image uploaded successfully. Open the Gallery page to view it.';
+            message.style.color = '#1a2b5e';
           }
-
-          const current = getUserUploadedImages();
-          current.unshift({ src: dataUrl, alt: file.name || 'Uploaded gallery image' });
-          saveUserUploadedImages(current);
-
-          fileInput.value = '';
-          passwordInput.value = '';
-          setUploadMessage('Image uploaded successfully. Open the Gallery page to view it.');
-        };
-
-        reader.onerror = () => setUploadMessage('Unable to read selected image.', true);
-        reader.readAsDataURL(file);
+        },
       });
-    })();
+    });
   </script>
 </body>
 </html>
