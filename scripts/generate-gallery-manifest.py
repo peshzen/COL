@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from pathlib import Path
 
@@ -18,14 +19,37 @@ MANIFEST_PATH = GALLERY_DIR / "gallery-manifest.json"
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
 
 
+def filename_to_caption(filename: str) -> str:
+    """Convert filename to a readable caption.
+    
+    Examples:
+      PHOTO-2023-06-04-14-29-19.jpg -> Photo 2023 06 04 14 29 19
+      image-sunset.jpg -> Image Sunset
+    """
+    # Remove extension
+    name_without_ext = Path(filename).stem
+    
+    # Replace hyphens and underscores with spaces
+    caption = name_without_ext.replace("-", " ").replace("_", " ")
+    
+    # Capitalize each word
+    caption = " ".join(word.capitalize() for word in caption.split())
+    
+    return caption
+
+
 def build_manifest() -> list[dict[str, str]]:
     images = []
     for file_path in sorted(GALLERY_DIR.iterdir()):
         if not file_path.is_file() or file_path.suffix.lower() not in ALLOWED_EXTENSIONS:
             continue
+        
+        caption = filename_to_caption(file_path.name)
         images.append(
             {
                 "src": f"assets/images/gallery/{file_path.name}",
+                "alt": caption,
+                "caption": caption,
             }
         )
     return images
