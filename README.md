@@ -1,6 +1,6 @@
-# Chaverim of Union County Website
+# Chaverim of Linden Website
 
-Production-ready static website for Chaverim of Union County.
+Production-ready static website for Chaverim of Linden.
 
 ## Stack
 - HTML5
