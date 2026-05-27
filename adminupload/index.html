@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>Gallery Upload - Chaveirim of Linden</title>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <style>
+    .admin-upload-wrap { max-width: 700px; margin: 70px auto; padding: 0 20px; }
+    .admin-upload-card { background: #fff; border: 1px solid #ececec; border-radius: 14px; box-shadow: 0 2px 12px rgba(26,43,94,0.10); padding: 24px; }
+    .admin-upload-card h1 { color: #1a2b5e; margin-bottom: 8px; }
+    .admin-upload-card p { color: #5a6282; margin-bottom: 14px; }
+    .admin-upload-form { display: flex; flex-direction: column; gap: 10px; }
+    .admin-upload-form input[type="password"], .admin-upload-form input[type="file"] { padding: 10px 12px; border: 1px solid #ccd3e8; border-radius: 10px; font: inherit; }
+    .admin-upload-message { min-height: 1.2em; font-weight: 700; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="admin-upload-wrap">
+    <div class="admin-upload-card">
+      <h1>Admin Gallery Upload</h1>
+      <p>This page is intentionally unlisted. Uploads here appear in the Gallery page for this browser.</p>
+      <div class="admin-upload-form">
+        <input type="password" id="gallery-upload-password" placeholder="Enter upload password" autocomplete="off" />
+        <input type="file" id="gallery-upload-input" accept="image/*" />
+        <button type="button" id="gallery-upload-button" class="btn-navy">Upload Image</button>
+      </div>
+      <p id="gallery-upload-message" class="admin-upload-message" aria-live="polite"></p>
+      <a href="../#gallery" class="btn-navy" style="margin-top: 8px; display: inline-block;">Go to Gallery</a>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const GALLERY_UPLOAD_PASSWORD = 'COLGalleryUpload';
+      const GALLERY_LOCAL_STORAGE_KEY = 'colGalleryUserUploads';
+
+      const getUserUploadedImages = () => {
+        try {
+          const raw = localStorage.getItem(GALLERY_LOCAL_STORAGE_KEY);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          console.error('Unable to read local gallery uploads:', error);
+          return [];
+        }
+      };
+
+      const saveUserUploadedImages = (items) => {
+        localStorage.setItem(GALLERY_LOCAL_STORAGE_KEY, JSON.stringify(items));
+      };
+
+      const setUploadMessage = (text, isError = false) => {
+        const message = document.getElementById('gallery-upload-message');
+        if (!message) return;
+        message.textContent = text;
+        message.style.color = isError ? '#b03020' : '#1a2b5e';
+      };
+
+      document.getElementById('gallery-upload-button')?.addEventListener('click', () => {
+        const passwordInput = document.getElementById('gallery-upload-password');
+        const fileInput = document.getElementById('gallery-upload-input');
+        const password = String(passwordInput?.value || '').trim();
+        const file = fileInput?.files && fileInput.files[0];
+
+        if (password !== GALLERY_UPLOAD_PASSWORD) {
+          setUploadMessage('Incorrect password. Image was not uploaded.', true);
+          return;
+        }
+
+        if (!file) {
+          setUploadMessage('Please choose an image first.', true);
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = String(reader.result || '');
+          if (!dataUrl) {
+            setUploadMessage('Unable to read selected image.', true);
+            return;
+          }
+
+          const current = getUserUploadedImages();
+          current.unshift({ src: dataUrl, alt: file.name || 'Uploaded gallery image' });
+          saveUserUploadedImages(current);
+
+          fileInput.value = '';
+          passwordInput.value = '';
+          setUploadMessage('Image uploaded successfully. Open the Gallery page to view it.');
+        };
+
+        reader.onerror = () => setUploadMessage('Unable to read selected image.', true);
+        reader.readAsDataURL(file);
+      });
+    })();
+  </script>
+</body>
+</html>

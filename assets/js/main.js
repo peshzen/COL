@@ -7,7 +7,24 @@
   const GALLERY_MANIFEST_PATH = 'assets/images/gallery/gallery-manifest.json';
   const GALLERY_PAGE_ID = 'gallery';
   const GALLERY_REFRESH_MS = 5000;
+  const GALLERY_UPLOAD_PASSWORD = 'COLGalleryUpload';
+  const GALLERY_LOCAL_STORAGE_KEY = 'colGalleryUserUploads';
   let galleryRefreshTimer = null;
+
+  const getUserUploadedImages = () => {
+    try {
+      const raw = localStorage.getItem(GALLERY_LOCAL_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.error('Unable to read local gallery uploads:', error);
+      return [];
+    }
+  };
+
+  const saveUserUploadedImages = (items) => {
+    localStorage.setItem(GALLERY_LOCAL_STORAGE_KEY, JSON.stringify(items));
+  };
 
   const renderGallery = async () => {
     const grid = document.getElementById('gallery-grid');
@@ -17,7 +34,9 @@
       const response = await fetch(GALLERY_MANIFEST_PATH, { cache: 'no-store' });
       if (!response.ok) throw new Error(`Gallery manifest request failed with ${response.status}`);
 
-      const items = await response.json();
+      const manifestItems = await response.json();
+      const userItems = getUserUploadedImages();
+      const items = [...userItems, ...manifestItems];
       if (!Array.isArray(items) || items.length === 0) {
         grid.innerHTML = '<p>No gallery images yet. Add files to <code>assets/images/gallery</code> and regenerate the manifest.</p>';
         return;
