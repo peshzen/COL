@@ -3,6 +3,43 @@
   const NAV_PREFIX = 'nav-';
   const DEFAULT_PAGE = 'home';
 
+
+  const GALLERY_MANIFEST_PATH = 'assets/images/gallery/gallery-manifest.json';
+
+  const renderGallery = async () => {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+
+    try {
+      const response = await fetch(GALLERY_MANIFEST_PATH, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Gallery manifest request failed with ${response.status}`);
+
+      const items = await response.json();
+      if (!Array.isArray(items) || items.length === 0) {
+        grid.innerHTML = '<p>No gallery images yet. Add files to <code>assets/images/gallery</code> and regenerate the manifest.</p>';
+        return;
+      }
+
+      grid.innerHTML = items
+        .map((item) => {
+          const src = String(item.src || '').trim();
+          if (!src) return '';
+          const alt = String(item.alt || 'Gallery image');
+          const caption = String(item.caption || alt);
+          return `
+            <figure class="gallery-card">
+              <img src="${src}" alt="${alt}" loading="lazy" />
+              <figcaption>${caption}</figcaption>
+            </figure>
+          `;
+        })
+        .join('');
+    } catch (error) {
+      console.error('Unable to load gallery manifest:', error);
+      grid.innerHTML = '<p>Unable to load gallery right now. Please try again later.</p>';
+    }
+  };
+
   const getPageIdFromHash = () => {
     const value = window.location.hash.replace('#', '').trim().toLowerCase();
     return value || DEFAULT_PAGE;
@@ -32,5 +69,6 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     setActivePage(getPageIdFromHash(), { updateHash: false, smoothScroll: false });
+    renderGallery();
   });
 })();
