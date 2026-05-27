@@ -18,22 +18,14 @@ MANIFEST_PATH = GALLERY_DIR / "gallery-manifest.json"
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
 
 
-def title_from_filename(name: str) -> str:
-    stem = Path(name).stem.replace("-", " ").replace("_", " ").strip()
-    return " ".join(part.capitalize() for part in stem.split()) or "Gallery image"
-
-
 def build_manifest() -> list[dict[str, str]]:
     images = []
     for file_path in sorted(GALLERY_DIR.iterdir()):
         if not file_path.is_file() or file_path.suffix.lower() not in ALLOWED_EXTENSIONS:
             continue
-        title = title_from_filename(file_path.name)
         images.append(
             {
                 "src": f"assets/images/gallery/{file_path.name}",
-                "alt": title,
-                "caption": title,
             }
         )
     return images
