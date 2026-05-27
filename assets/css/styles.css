@@ -636,3 +636,41 @@
       display: block;
       background: #f6f6f6;
     }
+
+    .gallery-upload-panel {
+      margin-top: 26px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .gallery-upload-panel h2 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .gallery-upload-panel p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+    .gallery-upload-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .gallery-upload-actions input[type="password"] {
+      min-width: 220px;
+      border: 1px solid #ccd3e8;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+    .gallery-upload-message {
+      margin-top: 10px;
+      min-height: 1.2em;
+      font-weight: 700;
+      color: var(--navy);
+    }
