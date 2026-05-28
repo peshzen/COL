@@ -143,6 +143,38 @@
     }
     .btn-call:hover { background: var(--red-hover); transform: scale(1.05); }
 
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      transition: background 0.18s, border-color 0.18s, transform 0.15s;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--white);
+      transition: transform 0.18s, opacity 0.18s;
+    }
+    .menu-toggle:hover,
+    .menu-toggle[aria-expanded="true"] {
+      background: rgba(242,202,76,0.16);
+      border-color: rgba(242,202,76,0.58);
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* NAV */
     nav {
       background: rgba(0,0,0,0.22);
@@ -656,12 +688,32 @@
 
     /* RESPONSIVE */
     @media (max-width: 680px) {
-      .header-top { padding: 8px 14px; }
-      .logo-img-wrap, .logo-img-wrap img { height: 58px; width: 58px; }
-      .org-name .main-title { font-size: 1.1rem; }
-      .nav-links { padding: 0 6px; overflow-x: auto; flex-wrap: nowrap; }
-      .nav-links li a { padding: 10px 11px; font-size: 0.76rem; white-space: nowrap; }
-      .btn-donate-flash, .btn-call { font-size: 0.76rem; padding: 8px 13px; }
+      header { position: sticky; }
+      .header-top { padding: 8px 14px; gap: 10px; flex-wrap: wrap; }
+      .logo-area { gap: 10px; min-width: 0; }
+      .logo-img-wrap, .logo-img-wrap img { height: 52px; width: 52px; }
+      .org-name .main-title { font-size: 1rem; }
+      .org-name .sub-title { font-size: 0.62rem; letter-spacing: 0.14em; }
+      .header-actions { margin-left: auto; gap: 7px; flex-wrap: nowrap; }
+      .menu-toggle { display: inline-flex; flex-shrink: 0; }
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 12px;
+        width: min(240px, calc(100vw - 24px));
+        background: linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        box-shadow: 0 14px 34px rgba(0,0,0,0.34);
+        overflow: hidden;
+      }
+      nav.menu-open { display: block; }
+      .nav-links { flex-direction: column; padding: 8px; }
+      .nav-links li a { border-bottom: 0; border-radius: 10px; padding: 12px 14px; font-size: 0.78rem; white-space: nowrap; }
+      .nav-links li a:hover,
+      .nav-links li a.active { border-bottom-color: transparent; }
+      .btn-donate-flash, .btn-call { font-size: 0.7rem; padding: 8px 10px; letter-spacing: 0.03em; white-space: nowrap; }
       .home-hero { padding: 56px 20px 48px; }
       .hero-logo { height: 88px; width: 88px; }
       .mission-section, .inner-wrap, .inner-wrap-wide { padding: 38px 18px 56px; }
