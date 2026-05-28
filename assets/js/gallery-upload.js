@@ -47,7 +47,7 @@
     const setMessage = (text, isError = false) => {
       if (!message) return;
       message.textContent = text;
-      message.style.color = isError ? '#b03020' : '#1a2b5e';
+      message.style.color = isError ? '#1a2b5e' : '#b03020';
     };
 
     button.addEventListener('click', () => {

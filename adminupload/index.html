@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="../assets/css/styles.css"/>
   <style>
     .admin-upload-wrap { max-width: 700px; margin: 70px auto; padding: 0 20px; }
-    .admin-upload-card { background: #fff; border: 1px solid #ececec; border-radius: 14px; box-shadow: 0 2px 12px rgba(26,43,94,0.10); padding: 24px; }
-    .admin-upload-card h1 { color: #1a2b5e; margin-bottom: 8px; }
-    .admin-upload-card p { color: #5a6282; margin-bottom: 14px; }
+    .admin-upload-card { background: #fff; border: 1px solid #ececec; border-radius: 14px; box-shadow: 0 2px 12px rgba(176,48,32,0.10); padding: 24px; }
+    .admin-upload-card h1 { color: #b03020; margin-bottom: 8px; }
+    .admin-upload-card p { color: #825a5a; margin-bottom: 14px; }
     .admin-upload-form { display: flex; flex-direction: column; gap: 10px; }
-    .admin-upload-form input[type="password"], .admin-upload-form input[type="file"] { padding: 10px 12px; border: 1px solid #ccd3e8; border-radius: 10px; font: inherit; }
+    .admin-upload-form input[type="password"], .admin-upload-form input[type="file"] { padding: 10px 12px; border: 1px solid #e8cfcc; border-radius: 10px; font: inherit; }
     .admin-upload-message { min-height: 1.2em; font-weight: 700; margin-top: 8px; }
   </style>
 </head>
@@ -36,7 +36,7 @@
           const message = document.getElementById('gallery-upload-message');
           if (message) {
             message.textContent = 'Image uploaded successfully. Open the Gallery page to view it.';
-            message.style.color = '#1a2b5e';
+            message.style.color = '#b03020';
           }
         },
       });
