@@ -1,19 +1,19 @@
     :root {
-      --navy:        #1a2b5e;
-      --navy-dark:   #111d42;
-      --navy-mid:    #243580;
+      --navy:        #b03020;
+      --navy-dark:   #8e2318;
+      --navy-mid:    #c04434;
       --gold:        #c9a028;
       --gold-light:  #f2ca4c;
       --gold-pale:   #fdf3d0;
-      --red:         #b03020;
-      --red-hover:   #8e2318;
+      --red:         #1a2b5e;
+      --red-hover:   #111d42;
       --white:       #ffffff;
       --cream:       #faf8f2;
       --gray-light:  #ececec;
-      --text:        #18213d;
-      --text-muted:  #5a6282;
-      --shadow-sm:   0 2px 12px rgba(26,43,94,0.10);
-      --shadow-md:   0 6px 28px rgba(26,43,94,0.15);
+      --text:        #3d1818;
+      --text-muted:  #825a5a;
+      --shadow-sm:   0 2px 12px rgba(176,48,32,0.10);
+      --shadow-md:   0 6px 28px rgba(176,48,32,0.15);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -139,7 +139,7 @@
       align-items: center;
       gap: 7px;
       transition: background 0.15s, transform 0.15s;
-      box-shadow: 0 2px 10px rgba(176,48,32,0.35);
+      box-shadow: 0 2px 10px rgba(26,43,94,0.35);
     }
     .btn-call:hover { background: var(--red-hover); transform: scale(1.05); }
 
@@ -297,7 +297,7 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       transition: all 0.18s;
-      box-shadow: 0 4px 18px rgba(176,48,32,0.42);
+      box-shadow: 0 4px 18px rgba(26,43,94,0.42);
     }
     .btn-help:hover { background: var(--red-hover); transform: translateY(-2px); }
 
@@ -668,7 +668,7 @@
     }
     .gallery-upload-actions input[type="password"] {
       min-width: 220px;
-      border: 1px solid #ccd3e8;
+      border: 1px solid #e8cfcc;
       border-radius: 10px;
       padding: 10px 12px;
       font: inherit;
