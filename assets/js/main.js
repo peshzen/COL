@@ -8,6 +8,15 @@
   const GALLERY_REFRESH_MS = 5000;
   let galleryRefreshTimer = null;
 
+  const setMobileMenuOpen = (isOpen) => {
+    const nav = document.getElementById('primary-navigation');
+    const toggle = document.querySelector('.menu-toggle');
+
+    nav?.classList.toggle('menu-open', isOpen);
+    toggle?.setAttribute('aria-expanded', String(isOpen));
+    toggle?.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  };
+
   const renderGallery = async () => {
     const grid = document.getElementById('gallery-grid');
     if (!grid) return;
@@ -78,6 +87,7 @@
       history.replaceState(null, '', `#${targetId}`);
     }
 
+    setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: smoothScroll ? 'smooth' : 'auto' });
   };
 
@@ -86,6 +96,24 @@
   window.addEventListener('hashchange', () => setActivePage(getPageIdFromHash(), { updateHash: false }));
 
   window.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('primary-navigation');
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setMobileMenuOpen(!isOpen);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (toggle?.getAttribute('aria-expanded') !== 'true') return;
+      if (nav?.contains(event.target) || toggle?.contains(event.target)) return;
+      setMobileMenuOpen(false);
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    });
+
     setActivePage(getPageIdFromHash(), { updateHash: false, smoothScroll: false });
     setupGalleryUpload();
     renderGallery();
