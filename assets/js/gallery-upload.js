@@ -1,6 +1,7 @@
 (() => {
   const GALLERY_UPLOAD_PASSWORD = 'COLGalleryUpload';
   const GALLERY_LOCAL_STORAGE_KEY = 'colGalleryUserUploads';
+  const MAX_UPLOAD_BYTES = 4 * 1024 * 1024; // 4MB per image to stay within localStorage quota
 
   const readUploads = () => {
     try {
@@ -63,6 +64,12 @@
         return;
       }
 
+      if (file.size > MAX_UPLOAD_BYTES) {
+        const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+        setMessage(`Selected file is ${sizeMb}MB. Maximum allowed size is 4MB.`, true);
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = String(reader.result || '');
@@ -73,7 +80,7 @@
 
         const saved = addUpload({ file, dataUrl });
         if (!saved) {
-          setMessage('Upload failed. The image may be too large for browser storage.', true);
+          setMessage('Upload failed: browser storage is full. Remove older uploaded images or choose a smaller image.', true);
           return;
         }
 
